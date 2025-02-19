@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Fun Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .fact {
+            margin: 20px 0;
+            font-size: 18px;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fact" id="fact">Click the button to see a fun fact about cats!</div>
+        <button onclick="showRandomFact()">Show Fun Fact</button>
+        <button onclick="shareOnTwitter()">Share on Twitter</button>
+    </div>
+    <script>
+        const funFacts = [
+            "Cats can make over 100 different sounds, while dogs can only make about 10.",
+            "A group of cats is called a clowder.",
+            "Cats have five toes on their front paws but only four toes on their back paws.",
+            "The world's oldest cat lived to be 38 years old.",
+            "Cats sleep for about 70% of their lives.",
+            "A cat's nose print is unique, much like a human's fingerprint.",
+            "Cats can rotate their ears 180 degrees.",
+            "The average cat can run up to 30 miles per hour.",
+            "Cats have a special reflective layer behind their retinas called the tapetum lucidum, which helps them see in low light.",
+            "The Maine Coon is one of the largest domesticated cat breeds."
+        ];
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            document.getElementById('fact').textContent = funFacts[randomIndex];
+        }
+
+        function shareOnTwitter() {
+            const fact = document.getElementById('fact').textContent;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
